@@ -1,0 +1,302 @@
+/*
+Theme Name: Mais Sindicos
+Theme URI: https://maissindicos.com.br
+Author: North
+Author URI: https://agencianorth.com
+Description: Tema desenvolvido exclusivamente para o Mais Sindicos pelo time da North.
+Version: 2.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, right-sidebar, custom-menu, featured-images, full-width-template, post-formats, sticky-post, theme-options, translation-ready
+Text Domain: clipping2018
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* Fontes */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
+
+* {
+	font-family: 'Poppins', sans-serif;
+	font-size: 15px;
+}
+
+/* STYLE SLIDE CARROUSEL */
+
+#main-slider {
+  position: relative;
+}
+#main-slider .carousel h2 {
+  font-size: 36px;
+}
+#main-slider .carousel .btn {
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  border-radius: 0;
+  margin-top: 5px;
+}
+#main-slider .carousel .btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#main-slider .carousel .boxed {
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: inline-block;
+}
+#main-slider .carousel .item {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  left: 0 !important;
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block !important;
+  height: 600px;
+  -webkit-transition: opacity ease-in-out 500ms;
+  -moz-transition: opacity ease-in-out 500ms;
+  -o-transition: opacity ease-in-out 500ms;
+  transition: opacity ease-in-out 500ms;
+}
+#main-slider .carousel .item:first-child {
+  top: auto;
+  position: relative;
+}
+#main-slider .carousel .item.active {
+  opacity: 1;
+  -webkit-transition: opacity ease-in-out 500ms;
+  -moz-transition: opacity ease-in-out 500ms;
+  -o-transition: opacity ease-in-out 500ms;
+  transition: opacity ease-in-out 500ms;
+  z-index: 1;
+}
+#main-slider .prev,
+#main-slider .next {
+  position: absolute;
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  display: inline-block;
+  margin-top: -25px;
+  font-size: 24px;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  z-index: 1042;
+}
+#main-slider .prev:hover,
+#main-slider .next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+#main-slider .prev {
+  left: 10px;
+}
+#main-slider .next {
+  right: 10px;
+}
+#main-slider .active .animation.animated-item-1 {
+  -webkit-animation: fadeInUp 300ms linear 300ms both;
+  -moz-animation: fadeInUp 300ms linear 300ms both;
+  -o-animation: fadeInUp 300ms linear 300ms both;
+  -ms-animation: fadeInUp 300ms linear 300ms both;
+  animation: fadeInUp 300ms linear 300ms both;
+}
+#main-slider .active .animation.animated-item-2 {
+  -webkit-animation: fadeInUp 300ms linear 600ms both;
+  -moz-animation: fadeInUp 300ms linear 600ms both;
+  -o-animation: fadeInUp 300ms linear 600ms both;
+  -ms-animation: fadeInUp 300ms linear 600ms both;
+  animation: fadeInUp 300ms linear 600ms both;
+}
+#main-slider .active .animation.animated-item-3 {
+  -webkit-animation: fadeInUp 300ms linear 900ms both;
+  -moz-animation: fadeInUp 300ms linear 900ms both;
+  -o-animation: fadeInUp 300ms linear 900ms both;
+  -ms-animation: fadeInUp 300ms linear 900ms both;
+  animation: fadeInUp 300ms linear 900ms both;
+}
+#main-slider .active .animation.animated-item-4 {
+  -webkit-animation: fadeInUp 300ms linear 1200ms both;
+  -moz-animation: fadeInUp 300ms linear 1200ms both;
+  -o-animation: fadeInUp 300ms linear 1200ms both;
+  -ms-animation: fadeInUp 300ms linear 1200ms both;
+  animation: fadeInUp 300ms linear 1200ms both;
+}
+#services .media:hover .icon-md {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* FIM STYLE SLIDE CARROUSEL */
+
+/* Títulos */
+
+
+/* Classes */
+
+
+/* Buttons */
+
+
+/* Colors e Backgrounds
+
+	Cores:
+	Top-bar: #3a526a - Azul escuro
+	Botões de destaque: #18ba60 - Verde claro
+	Background diverso: #2e363a - Cinza escuro
+
+*/
+
+/* Forms */
+
+
+/* Menus */
+
+
+/*
+
+	TOP BAR HEADER DARK BLUE
+
+*/
+
+.fixed-top-bar {
+	width: 100%;
+	color: #fff;
+	background: #3a526a;
+}
+.custom-info {
+	margin: 0;
+	padding: 0;
+}
+
+.custom-info .number:after {
+	content: '';
+	width: 1px;
+	margin: 0 15px;
+	padding: 7px 0;
+	background: #617588;
+	display: inline-block;
+
+}
+
+.custom-info li{
+	font-size: 12px;
+	display: inline-block;
+}
+
+.custom-info li i {
+	padding: 0 10px 0 0;
+}
+.top-bar-budget ul {
+	padding: 0;
+	margin: 0;
+}
+
+.top-bar-budget ul li{
+	font-size: 12px;
+	display: inline-block;
+}
+
+.top-bar-budget li i {
+	padding: 0 10px 0 0;
+}
+
+.top-bar-budget ul li a {
+	color: #fff;
+	font-size: 14px;
+	transition: .5s;
+	margin: 0 0 0 20px;
+	padding: 12px 30px;
+	font-weight: 600;
+	background: #18ba60;
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.top-bar-budget a:hover {
+	color: #fff;
+	background: #000;
+}
+
+/*
+
+	NAV BAR MENU
+
+*/
+
+.wrapper-navbar {
+	background: #fff;
+	padding: 27.5px 0;
+	margin: 0;
+}
+
+.navbar {
+	padding: 0;
+}
+
+.navbar-light .navbar-nav .nav-link {
+	color: #424242;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: 0 5px 0;
+	padding: 0 20px 0;
+	transition: .3s;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+ color: #18ba60;
+}
+
+/* STYLE TO PAGE ACTIVE */
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+	color: #18ba60;
+}
+
+#main-slider .carousel .item {
+	height: 51.3vw;
+}
+
+.carousel-inner .item {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	width: 100%;
+	height: 51.3vw;
+	opacity: 1;
+	z-index: 20;
+}
+
+.carousel-content h2, p, a {
+	color: #fff;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575px) { 
+
+
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 777px) { 
+
+
+}
+
+
+@media (min-width: 992px) { 
+
+
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media (min-width: 1199px) { 
+ 
+}
