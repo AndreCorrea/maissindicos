@@ -701,9 +701,9 @@ $args = array(
     'has_archive'           => false,
     'exclude_from_search'   => true,
     'menu_icon'             => get_template_directory_uri() . '/admin/images/icon-services.png',
-    'rewrite'               => true,
+    'rewrite'               => array( 'slug' => 'servicos'),
     'capability_type'       => 'post',
-    'supports'              => array('title', 'page-attributes', 'editor')
+    'supports'              => array('title', 'page-attributes', 'editor', 'thumbnail')
     );
 register_post_type('zee_service', $args);
 flush_rewrite_rules();
@@ -1148,7 +1148,7 @@ register_sidebar(array(
   'description' => __( 'Widgets in this area will be shown before Footer.' , ZEETEXTDOMAIN),
   'before_title' => '<h3>',
   'after_title' => '</h3>',
-  'before_widget' => '<div class="col-sm-3 col-xs-6">',
+  'before_widget' => '<div class="col-lg-3">',
   'after_widget' => '</div>'
   )
 );

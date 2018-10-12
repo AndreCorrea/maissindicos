@@ -11,7 +11,7 @@ add_shortcode( 'zee_button', function( $atts, $content= null ){
       'class' => '',
       'icon'  => '',
       'target'=>'_self'
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -35,7 +35,7 @@ add_shortcode( 'zee_alert', function( $atts, $content= null ){
       "type" => 'info',
       "close" => 'no',
       "title" => '',
-      ), $atts);
+    ), $atts);
 
   //extract($atts);
 
@@ -66,7 +66,7 @@ add_shortcode( 'zee_divider', function( $atts, $content= null ){
   $atts = shortcode_atts(
     array(
       'size'  => 'default'
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -89,7 +89,7 @@ add_shortcode( 'zee_bar', function( $atts, $content= null ) {
       "min"        => '0',
       "max"        => '100',
       "default"        => '70'
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -108,7 +108,7 @@ add_shortcode( 'zee_container', function( $atts, $content = null ) {
     array(
       "class"        => '',
       'id'           => ''
-      ), $atts);
+    ), $atts);
   
   extract($atts);
 
@@ -128,7 +128,7 @@ add_shortcode( 'zee_faq', function( $atts=null, $content= null ){
     'post_type'=>'zee_faq', 
     'orderby' => 'menu_order',
     'order' => 'ASC'
-    );
+  );
 
   $posts = get_posts( $args ); ?>
   <div class="row">
@@ -145,12 +145,12 @@ add_shortcode( 'zee_faq', function( $atts=null, $content= null ){
             </div>
           </div>
         </li>
-        <?php } ?>
-      </ul>
-    </div>
-    <?php
-    return ob_get_clean();
-  });
+      <?php } ?>
+    </ul>
+  </div>
+  <?php
+  return ob_get_clean();
+});
 
 
 // Service
@@ -161,7 +161,7 @@ add_shortcode( 'zee_service', function( $atts, $content= null ){
       "category"    => 0,
       "column"     => 3,
       "number"      => 3
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -174,7 +174,7 @@ add_shortcode( 'zee_service', function( $atts, $content= null ){
     'orderby' => 'menu_order',
     'order' => 'ASC',
     'numberposts' => $number,
-    );
+  );
 
 
   if(  $category > 0 ){
@@ -184,34 +184,42 @@ add_shortcode( 'zee_service', function( $atts, $content= null ){
         'taxonomy' => 'cat_service',
         'field' => 'term_id',
         'terms' => $category
-        )
-      );
+      )
+    );
   }
 
-    $posts = get_posts( $args ); ?>
+  $posts = get_posts( $args ); ?>
+  <div class="bg-media">
+    <h2 class="our-services-title">Nossos serviços</h2>
     <div class="row">
       <?php foreach ($posts as $key => $post) {
         $icon = get_post_meta( $post->ID, 'service_icon', true );
         $color = get_post_meta($post->ID, 'service_color', true);
         ?>
-        <div class="col-sm-<?php echo (12/$column); ?>">
+        <div class="col-sm-<?php echo (12/$column); ?> media-area">
           <div class="media services">
             <?php if( $icon ) { ?>
-            <div class="pull-left">
-              <i style="background-color:<?php echo  $color ?>;" class="<?php echo $icon; ?> icon-md"></i>
+              <div class="pull-left">
+               <div class="icons">
+                <i style="background-color:<?php echo  $color ?>;" class="<?php echo $icon; ?> icon-md"></i>
+              </div>
             </div>
-            <?php } ?>
-            <div class="media-body">
-              <h3 class="media-heading"><?php echo $post->post_title; ?></h3>
-              <?php echo do_shortcode( $post->post_content ); ?>
-            </div>
+          <?php } ?>
+          <div class="media-body">
+            <h3 class="media-heading"><?php echo $post->post_title; ?></h3>
+            <?php echo do_shortcode( $post->post_content ); ?>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis fugit at eveniet necessitatibus blanditiis.
+            </p>
           </div>
         </div>
-        <?php } ?>
       </div>
-      <?php
-      return ob_get_clean();
-    });
+    <?php } ?>
+  </div>
+
+  </div>      <?php
+  return ob_get_clean();
+});
 
 
 // Testimonial
@@ -220,7 +228,7 @@ add_shortcode( 'zee_testimonial', function( $atts, $content= null ){
   $atts = shortcode_atts(
     array(
       "count"        => ''
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -232,7 +240,7 @@ add_shortcode( 'zee_testimonial', function( $atts, $content= null ){
     'numberposts' => $count, 
     'orderby' => 'menu_order',
     'order' => 'ASC'
-    );
+  );
 
   $posts = get_posts( $args ); ?>
   <div class="row">
@@ -245,11 +253,11 @@ add_shortcode( 'zee_testimonial', function( $atts, $content= null ){
           <small class="designation"><?php echo get_post_meta($post->ID, 'testimonial_designation',true)   ?></small>
         </blockquote>
       </div>
-      <?php } ?>
-    </div>
-    <?php
-    return ob_get_clean();
-  });
+    <?php } ?>
+  </div>
+  <?php
+  return ob_get_clean();
+});
 
 
 /**
@@ -263,65 +271,65 @@ add_shortcode( 'zee_portfolio', function( $atts, $content = null ){
  $atts = shortcode_atts(
   array(
     'column' => '3'
-    ), $atts);
+  ), $atts);
 
  extract($atts);
 
  $args = array(
-    'posts_per_page' => -1,
-    'post_type'      =>  'zee_portfolio'
-  );
+  'posts_per_page' => -1,
+  'post_type'      =>  'zee_portfolio'
+);
 
  $portfolios = get_posts( $args );
 
  ob_start();
 
  if(count($portfolios)>0){ ?>
- <div id="portfolio" class="clearfix">
+   <div id="portfolio" class="clearfix">
 
-  <ul class="portfolio-filter">
-    <li><a class="btn btn-default active" href="#" data-filter="*"><?php _e('All', ZEETEXTDOMAIN); ?></a></li>
-    <?php 
-    $terms = get_terms('cat_portfolio', array('hide_empty'=> true));
-    foreach ($terms as $term) {
+    <ul class="portfolio-filter">
+      <li><a class="btn btn-default active" href="#" data-filter="*"><?php _e('All', ZEETEXTDOMAIN); ?></a></li>
+      <?php 
+      $terms = get_terms('cat_portfolio', array('hide_empty'=> true));
+      foreach ($terms as $term) {
+        ?>
+        <li><a class="btn btn-default" href="#" data-filter=".<?php echo $term->slug; ?>"><?php echo $term->name; ?></a></li>
+        <?php
+      }
       ?>
-      <li><a class="btn btn-default" href="#" data-filter=".<?php echo $term->slug; ?>"><?php echo $term->name; ?></a></li>
-      <?php
-    }
-    ?>
-  </ul>
+    </ul>
 
-  <ul class="portfolio-items col-<?php echo $column; ?>">
-    <?php foreach ($portfolios as $key => $value) { ?>
-    <?php 
-    $terms = wp_get_post_terms( $value->ID, 'cat_portfolio' );
-    $new_terms = array();
-    foreach ($terms as $term) $new_terms[] = $term->slug;
-    $slugs = implode(' ', $new_terms);
-    ?>
-    <li class="portfolio-item <?php echo $slugs; ?>">
-      <div class="item-inner">
+    <ul class="portfolio-items col-<?php echo $column; ?>">
+      <?php foreach ($portfolios as $key => $value) { ?>
         <?php 
-        echo get_the_post_thumbnail( $value->ID, array(300,300), array( 
-          'class' => "img-responsive", 
-          'alt' => trim(strip_tags( $value->post_title )),
-          'title' => trim(strip_tags( $value->post_title ))
-          )); 
-          ?> 
-          <a href="<?php echo get_permalink( $value->ID ); ?>"><h5><?php echo $value->post_title; ?></h5></a>
-          <div class="overlay">
+        $terms = wp_get_post_terms( $value->ID, 'cat_portfolio' );
+        $new_terms = array();
+        foreach ($terms as $term) $new_terms[] = $term->slug;
+        $slugs = implode(' ', $new_terms);
+        ?>
+        <li class="portfolio-item <?php echo $slugs; ?>">
+          <div class="item-inner">
             <?php 
-            $full_img = wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'full');
-            $img_src= $full_img[0];
-            ?>
-            <a class="preview btn btn-danger" href="<?php echo $img_src; ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>              
-          </div>           
-        </div>
-      </li>
+            echo get_the_post_thumbnail( $value->ID, array(300,300), array( 
+              'class' => "img-responsive", 
+              'alt' => trim(strip_tags( $value->post_title )),
+              'title' => trim(strip_tags( $value->post_title ))
+            )); 
+            ?> 
+            <a href="<?php echo get_permalink( $value->ID ); ?>"><h5><?php echo $value->post_title; ?></h5></a>
+            <div class="overlay">
+              <?php 
+              $full_img = wp_get_attachment_image_src( get_post_thumbnail_id($value->ID), 'full');
+              $img_src= $full_img[0];
+              ?>
+              <a class="preview btn btn-danger" href="<?php echo $img_src; ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>              
+            </div>           
+          </div>
+        </li>
       <?php } ?>
     </ul>
   </div>
-  <?php } else { ?>
+<?php } else { ?>
   <div class="alert alert-danger fade in">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <?php _e('No portfolio item found!', ZEETEXTDOMAIN); ?>
@@ -347,55 +355,55 @@ add_shortcode( 'zee_team', function( $atts, $content = null ){
 
   $args = array(
     'posts_per_page' => -1,
-   'post_type'      =>  'zee_team'
-   );
+    'post_type'      =>  'zee_team'
+  );
 
 
   $data = get_posts( $args );
   if(count($data)>0){ ?>
-  <div class="team row">
-    <?php foreach ($data as $key => $value) { ?>
-    <div  class="col-md-3 col-sm-4 col-xs-6">
-      <div class="center team-member">
-        <p><img class="img-circle img-thumbnail" src="<?php echo zee_get_thumb_url($value->ID) ?>" alt="?php echo $value->post_title; ?>"></p>
-        <h4>
-          <?php echo $value->post_title; ?>
-          <?php if(get_post_meta($value->ID, 'team_designation', true)!=''){ ?>
-          <br><small class="designation muted"><?php echo get_post_meta($value->ID, 'team_designation', true)   ?></small>
-          <?php } ?>
-        </h4>
+    <div class="team row">
+      <?php foreach ($data as $key => $value) { ?>
+        <div  class="col-md-3 col-sm-4 col-xs-6">
+          <div class="center team-member">
+            <p><img class="img-circle img-thumbnail" src="<?php echo zee_get_thumb_url($value->ID) ?>" alt="?php echo $value->post_title; ?>"></p>
+            <h4>
+              <?php echo $value->post_title; ?>
+              <?php if(get_post_meta($value->ID, 'team_designation', true)!=''){ ?>
+                <br><small class="designation muted"><?php echo get_post_meta($value->ID, 'team_designation', true)   ?></small>
+              <?php } ?>
+            </h4>
 
-        <p><?php echo $value->post_content; ?></p>
-        <div class="social-btns clearfix">
-          <?php if(get_post_meta($value->ID, 'team_facebook', true)!=''){ ?>
-          <a class="btn btn-social btn-facebook" href="<?php echo  get_post_meta($value->ID, 'team_facebook', true)   ?>"><i class="icon-facebook"></i></a>
-          <?php } ?>
-          <?php if(get_post_meta($value->ID, 'team_twitter', true)!=''){ ?>
-          <a class="btn btn-social btn-twitter" href="<?php echo get_post_meta($value->ID, 'team_twitter', true)?>"><i class="icon-twitter"></i></a>
-          <?php } ?>        
-          <?php if(get_post_meta($value->ID, 'team_gplus', true)!=''){ ?>
-          <a class="btn btn-social btn-google-plus" href="<?php echo get_post_meta($value->ID, 'team_gplus', true)?>"><i class="icon-google-plus"></i></a>
-          <?php } ?>
-          <?php if(get_post_meta($value->ID, 'team_linkedin', true)!=''){ ?>
-          <a class="btn btn-social btn-linkedin" href="<?php echo get_post_meta($value->ID, 'team_linkedin', true)?>"><i class="icon-linkedin"></i></a>
-          <?php } ?>                
-          <?php if(get_post_meta($value->ID, 'team_pinterest', true)!=''){ ?>
-          <a class="btn btn-social btn-pinterest" href="<?php echo get_post_meta($value->ID, 'team_pinterest', true)?>"><i class="icon-pinterest"></i></a>
-          <?php } ?>    
-        </div>
-      </div>
-    </div><!--/.col-->
-    <?php } ?>
-  </div><!--/.team-->
+            <p><?php echo $value->post_content; ?></p>
+            <div class="social-btns clearfix">
+              <?php if(get_post_meta($value->ID, 'team_facebook', true)!=''){ ?>
+                <a class="btn btn-social btn-facebook" href="<?php echo  get_post_meta($value->ID, 'team_facebook', true)   ?>"><i class="icon-facebook"></i></a>
+              <?php } ?>
+              <?php if(get_post_meta($value->ID, 'team_twitter', true)!=''){ ?>
+                <a class="btn btn-social btn-twitter" href="<?php echo get_post_meta($value->ID, 'team_twitter', true)?>"><i class="icon-twitter"></i></a>
+              <?php } ?>        
+              <?php if(get_post_meta($value->ID, 'team_gplus', true)!=''){ ?>
+                <a class="btn btn-social btn-google-plus" href="<?php echo get_post_meta($value->ID, 'team_gplus', true)?>"><i class="icon-google-plus"></i></a>
+              <?php } ?>
+              <?php if(get_post_meta($value->ID, 'team_linkedin', true)!=''){ ?>
+                <a class="btn btn-social btn-linkedin" href="<?php echo get_post_meta($value->ID, 'team_linkedin', true)?>"><i class="icon-linkedin"></i></a>
+              <?php } ?>                
+              <?php if(get_post_meta($value->ID, 'team_pinterest', true)!=''){ ?>
+                <a class="btn btn-social btn-pinterest" href="<?php echo get_post_meta($value->ID, 'team_pinterest', true)?>"><i class="icon-pinterest"></i></a>
+              <?php } ?>    
+            </div>
+          </div>
+        </div><!--/.col-->
+      <?php } ?>
+    </div><!--/.team-->
 
   <?php } else { ?>
-  <div class="alert alert-danger fade in">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <?php _e('No Team found!', ZEETEXTDOMAIN); ?>
-  </div>
-  <?php
-}
-return ob_get_clean();
+    <div class="alert alert-danger fade in">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <?php _e('No Team found!', ZEETEXTDOMAIN); ?>
+    </div>
+    <?php
+  }
+  return ob_get_clean();
 
 });
 
@@ -414,7 +422,7 @@ add_shortcode( 'zee_accordion', function( $atts, $content = null ){
   $atts = shortcode_atts(
     array(
       'category' => 0
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -423,7 +431,7 @@ add_shortcode( 'zee_accordion', function( $atts, $content = null ){
     'post_type'=>'zee_accordion', 
     'orderby' => 'menu_order',
     'order' => 'ASC'
-    );
+  );
 
 
   if(  $category > 0 ){
@@ -433,44 +441,44 @@ add_shortcode( 'zee_accordion', function( $atts, $content = null ){
         'taxonomy' => 'cat_accordions',
         'field' => 'term_id',
         'terms' => $category
-        )
-      );
+      )
+    );
   }
 
   $id = $category;
   $accordions = get_posts( $args );
   if(count($accordions)>0){ ?>
-  <div class="panel-group" id="panel-<?php echo $id; ?>">
-    <?php foreach ($accordions as $key => $value) { ?>
+    <div class="panel-group" id="panel-<?php echo $id; ?>">
+      <?php foreach ($accordions as $key => $value) { ?>
 
-    <div class="panel panel-default">
+        <div class="panel panel-default">
 
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a class="accordion-toggle <?php echo ($key==0)? '':'collapsed'; ?>" data-toggle="collapse" data-parent="#panel-<?php echo $id ?>" href="#accordion-<?php echo $value->ID . $category; ?>">
-            <?php echo do_shortcode( $value->post_title ); ?>
-          </a>
-        </h3>
-      </div>
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a class="accordion-toggle <?php echo ($key==0)? '':'collapsed'; ?>" data-toggle="collapse" data-parent="#panel-<?php echo $id ?>" href="#accordion-<?php echo $value->ID . $category; ?>">
+                <?php echo do_shortcode( $value->post_title ); ?>
+              </a>
+            </h3>
+          </div>
 
-      <div id="accordion-<?php echo $value->ID . $category; ?>" class="panel-collapse <?php echo ($key==0)? 'collapse in':'collapse'; ?>">
-        <div class="panel-body">
-          <?php echo do_shortcode( $value->post_content ); ?>
+          <div id="accordion-<?php echo $value->ID . $category; ?>" class="panel-collapse <?php echo ($key==0)? 'collapse in':'collapse'; ?>">
+            <div class="panel-body">
+              <?php echo do_shortcode( $value->post_content ); ?>
+            </div>
+          </div>
+
         </div>
-      </div>
-
+      <?php } ?>
     </div>
-    <?php } ?>
-  </div>
 
   <?php } else { ?>
-  <div class="alert alert-danger fade in">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <?php _e('No accordion item found!', ZEETEXTDOMAIN); ?>
-  </div>
-  <?php
-}
-return ob_get_clean();
+    <div class="alert alert-danger fade in">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <?php _e('No accordion item found!', ZEETEXTDOMAIN); ?>
+    </div>
+    <?php
+  }
+  return ob_get_clean();
 
 });
 
@@ -488,7 +496,7 @@ add_shortcode( 'zee_column', function( $atts, $content=null ){
  $atts = shortcode_atts(
   array(
     'size' => '1'
-    ), $atts);
+  ), $atts);
 
 
  $output = '<div class="col-md-'.$atts['size'].'">';
@@ -506,7 +514,7 @@ add_shortcode( 'zee_tab', function( $atts, $content = null ){
   $atts = shortcode_atts(
     array(
       'category' => '0'
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -515,7 +523,7 @@ add_shortcode( 'zee_tab', function( $atts, $content = null ){
     'post_type'=>'zee_tab', 
     'orderby' => 'menu_order',
     'order' => 'ASC'
-    );
+  );
 
 
   if(  $category > 0 ){
@@ -525,8 +533,8 @@ add_shortcode( 'zee_tab', function( $atts, $content = null ){
         'taxonomy' => 'cat_tabs',
         'field' => 'term_id',
         'terms' => $category
-        )
-      );
+      )
+    );
   }
 
   $tabs = get_posts( $args );
@@ -535,13 +543,13 @@ add_shortcode( 'zee_tab', function( $atts, $content = null ){
     ?>
     <ul class="nav nav-tabs">
       <?php foreach ($tabs as $key => $value) { ?>
-      <li class="<?php echo ($key==0)?'active':''; ?>" ><a href="#tab-<?php echo $value->ID . $category; ?>" data-toggle="tab"><?php echo do_shortcode( $value->post_title ); ?></a></li>
+        <li class="<?php echo ($key==0)?'active':''; ?>" ><a href="#tab-<?php echo $value->ID . $category; ?>" data-toggle="tab"><?php echo do_shortcode( $value->post_title ); ?></a></li>
       <?php } ?>
     </ul>
 
     <div class="tab-content">
       <?php foreach ($tabs as $key => $value) { ?>
-      <div class="tab-pane fade<?php echo ($key==0)?' active in':''; ?>" id="tab-<?php echo $value->ID . $category; ?>"><?php echo do_shortcode( $value->post_content ); ?></div>
+        <div class="tab-pane fade<?php echo ($key==0)?' active in':''; ?>" id="tab-<?php echo $value->ID . $category; ?>"><?php echo do_shortcode( $value->post_content ); ?></div>
       <?php } ?>
     </div>
 
@@ -567,7 +575,7 @@ add_shortcode( 'zee_pricing', function( $atts, $content = null ){
   $atts = shortcode_atts(
     array(
       'category' => '0'
-      ), $atts);
+    ), $atts);
 
   extract($atts);
 
@@ -576,7 +584,7 @@ add_shortcode( 'zee_pricing', function( $atts, $content = null ){
     'post_type'=>'zee_pricing', 
     'orderby' => 'menu_order',
     'order' => 'ASC'
-    );
+  );
 
 
   if(  $category > 0 ){
@@ -586,8 +594,8 @@ add_shortcode( 'zee_pricing', function( $atts, $content = null ){
         'taxonomy' => 'cat_pricing',
         'field' => 'term_id',
         'terms' => $category
-        )
-      );
+      )
+    );
   }
 
   $pricings = get_posts( $args );
@@ -596,26 +604,26 @@ add_shortcode( 'zee_pricing', function( $atts, $content = null ){
     ?>
     <div class="row pricing-tables">
       <?php foreach ($pricings as $key => $value) { ?>
-      <?php $featured = get_post_meta($value->ID, 'pricing_featured',true); ?>
+        <?php $featured = get_post_meta($value->ID, 'pricing_featured',true); ?>
 
-      <div class="col-lg-<?php echo round(12/count($pricings)); ?>">
+        <div class="col-lg-<?php echo round(12/count($pricings)); ?>">
 
-        <ul class="plan<?php echo ($featured==1)? ' featured' : ''; ?>">
-          <li class="plan-name">
-            <h3><?php echo $value->post_title; ?></h3>
-          </li>
-          <li class="plan-price">
-            <div>
-              <span class="price"><?php echo get_post_meta($value->ID, 'pricing_price',true) ?></span>
-              <small><?php echo get_post_meta($value->ID, 'pricing_duration',true) ?></small>
-            </div>
-          </li>
-          <li class="plan-details"><?php echo $value->post_content; ?></li>
-          <li class="plan-button-box">
-            <a class="btn btn-primary" href="<?php echo get_post_meta($value->ID, 'pricing_button_url',true) ?>"><?php echo get_post_meta($value->ID, 'pricing_button_text',true) ?></a>
-          </li>
-        </ul>
-      </div>
+          <ul class="plan<?php echo ($featured==1)? ' featured' : ''; ?>">
+            <li class="plan-name">
+              <h3><?php echo $value->post_title; ?></h3>
+            </li>
+            <li class="plan-price">
+              <div>
+                <span class="price"><?php echo get_post_meta($value->ID, 'pricing_price',true) ?></span>
+                <small><?php echo get_post_meta($value->ID, 'pricing_duration',true) ?></small>
+              </div>
+            </li>
+            <li class="plan-details"><?php echo $value->post_content; ?></li>
+            <li class="plan-button-box">
+              <a class="btn btn-primary" href="<?php echo get_post_meta($value->ID, 'pricing_button_url',true) ?>"><?php echo get_post_meta($value->ID, 'pricing_button_text',true) ?></a>
+            </li>
+          </ul>
+        </div>
       <?php } ?>
     </div>
     <?php
@@ -641,7 +649,7 @@ add_shortcode( 'zee_icon', function( $atts, $content=null ){
   $atts = shortcode_atts(array(
     'image' => 'icon-home',
     'size' => ''
-    ), $atts);
+  ), $atts);
 
   extract($atts);
 
@@ -666,7 +674,7 @@ add_shortcode( 'zee_blocknumber', function( $atts, $content="" ) {
     'background' => '#333',
     'color' => '#999',
     'borderradius'=>'2px'
-    ), $atts));
+  ), $atts));
 
   return '<p class="blocknumber"><span style="background:'.$background.';color:'.$color.';border-radius:'.$borderradius.'">' . $number . '</span> ' . do_shortcode( $content ) . '</p>';
 } );
@@ -679,7 +687,7 @@ add_shortcode( 'zee_block', function( $atts, $content="" ) {
     'color' => '#666',
     'borderradius'=>'2px',
     'padding' => '15px'
-    ), $atts));
+  ), $atts));
 
   return '<div class="block" style="background:'.$background.';color:'.$color.';border-radius:'.$borderradius.';padding:'.$padding.'">'.$content.'</div>';
 } );
@@ -692,7 +700,7 @@ add_shortcode( 'zee_recent_works', function( $atts, $content= null ){
     'slides'        => 2,
     'title'         => '',
     'description'   => ''
-    ), $atts);
+  ), $atts);
 
   extract($atts);
 
@@ -703,7 +711,7 @@ add_shortcode( 'zee_recent_works', function( $atts, $content= null ){
     'orderby'       =>  'menu_order',
     'order'         =>  'ASC',
     'post_type'     =>  'zee_portfolio'
-    );
+  );
 
   $portfolios = get_posts( $args );
 
@@ -743,12 +751,12 @@ add_shortcode( 'zee_recent_works', function( $atts, $content= null ){
                 ?>
                 <div class="col-xs-<?php echo round(12/$item_per_slide) ?>">
                   <div class="portfolio-item">
-                  <div class="item-inner">
-                    <?php 
-                    echo get_the_post_thumbnail( $value->ID, array(400,400), array( 
-                      'class' => "img-responsive", 
-                      'alt' => trim(strip_tags( $value->post_title )),
-                      'title' => trim(strip_tags( $value->post_title ))
+                    <div class="item-inner">
+                      <?php 
+                      echo get_the_post_thumbnail( $value->ID, array(400,400), array( 
+                        'class' => "img-responsive", 
+                        'alt' => trim(strip_tags( $value->post_title )),
+                        'title' => trim(strip_tags( $value->post_title ))
                       )); 
                       ?>
                       <h5>
@@ -762,28 +770,28 @@ add_shortcode( 'zee_recent_works', function( $atts, $content= null ){
                         <a class="preview btn btn-danger" title="<?php echo $value->post_title; ?>" href="<?php echo $img_src; ?>" rel="prettyPhoto"><i class="icon-eye-open"></i></a>   
                       </div>
                     </div><!--.item-inner-->
-                    </div><!--.portfolio-item-->
-                  </div>    
-                  <?php
-                  if(($i == $item_per_slide) || $lastContainer) {
-                    ?>
-                  </div><!--/.row-->
-                </div><!--/.col-xs-->
+                  </div><!--.portfolio-item-->
+                </div>    
                 <?php
-                $i=0;
-              }
-              $i++;
-              $j++;
+                if(($i == $item_per_slide) || $lastContainer) {
+                  ?>
+                </div><!--/.row-->
+              </div><!--/.col-xs-->
+              <?php
+              $i=0;
             }
-            ?>
-          </div>
+            $i++;
+            $j++;
+          }
+          ?>
         </div>
-      </div><!--/.col-md-9-->
-      <?php
-    }
+      </div>
+    </div><!--/.col-md-9-->
+    <?php
+  }
 
-    return ob_get_clean();
-  });
+  return ob_get_clean();
+});
 
 //fontawesome font list
 add_shortcode( 'zee_fontawesome', function( $atts, $content = null ) {

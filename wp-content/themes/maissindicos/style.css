@@ -25,6 +25,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 /* STYLE SLIDE CARROUSEL */
 
+
 #main-slider {
   position: relative;
 }
@@ -45,36 +46,36 @@ Use it to make something cool, have fun, and share what you've learned with othe
   background-color: rgba(0, 0, 0, 0.8);
   display: inline-block;
 }
-#main-slider .carousel .item {
+#main-slider .carousel .carousel-item {
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
   left: 0 !important;
-  opacity: 0;
+  opacity: 1;
   top: 0;
   position: absolute;
   width: 100%;
   display: block !important;
-  height: 600px;
+  height: 450px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
   transition: opacity ease-in-out 500ms;
 }
-#main-slider .carousel .item:first-child {
+#main-slider .carousel .carousel-item:first-child {
   top: auto;
   position: relative;
 }
-#main-slider .carousel .item.active {
-  opacity: 1;
+#main-slider .carousel .carousel-item.active {
+  opacity: 0;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
   transition: opacity ease-in-out 500ms;
   z-index: 1;
 }
-#main-slider .prev,
-#main-slider .next {
+#main-slider .carousel-control-prev,
+#main-slider .carousel-control-next {
   position: absolute;
   top: 50%;
   background-color: rgba(0, 0, 0, 0.3);
@@ -87,18 +88,19 @@ Use it to make something cool, have fun, and share what you've learned with othe
   line-height: 50px;
   text-align: center;
   border-radius: 4px;
-  z-index: 1042;
+  z-index: 5;
+  z-index: 999;
 }
-#main-slider .prev:hover,
-#main-slider .next:hover {
+#main-slider .carousel-control-prev:hover,
+#main-slider ..carousel-control-next:hover {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
 }
-#main-slider .prev {
+#main-slider .carousel-control-prev {
   left: 10px;
 }
-#main-slider .next {
-  right: 10px;
+#main-slider .carousel-control-next {
+  right: 15px;
 }
 #main-slider .active .animation.animated-item-1 {
   -webkit-animation: fadeInUp 300ms linear 300ms both;
@@ -127,10 +129,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
   -o-animation: fadeInUp 300ms linear 1200ms both;
   -ms-animation: fadeInUp 300ms linear 1200ms both;
   animation: fadeInUp 300ms linear 1200ms both;
-}
-#services .media:hover .icon-md {
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* FIM STYLE SLIDE CARROUSEL */
@@ -205,6 +203,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .top-bar-budget li i {
 	padding: 0 10px 0 0;
+	font-size: 12px;
 }
 
 .top-bar-budget ul li a {
@@ -230,10 +229,16 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 */
 
+.navmenu-top {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+
 .wrapper-navbar {
+	margin: 0;
 	background: #fff;
 	padding: 27.5px 0;
-	margin: 0;
+	box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .navbar {
@@ -242,12 +247,12 @@ Use it to make something cool, have fun, and share what you've learned with othe
 
 .navbar-light .navbar-nav .nav-link {
 	color: #424242;
+	transition: .3s;
 	font-size: 14px;
 	font-weight: 600;
-	text-transform: uppercase;
 	margin: 0 5px 0;
 	padding: 0 20px 0;
-	transition: .3s;
+	text-transform: uppercase;
 }
 
 .navbar-light .navbar-nav .nav-link:hover {
@@ -260,23 +265,522 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	color: #18ba60;
 }
 
+.navbar-nav .dropdown-menu li a {
+	transition: .5s;
+	background: none;
+}
+
+.navbar-nav .dropdown-menu a:hover {
+	color: #18ba60;
+}
+
 #main-slider .carousel .item {
 	height: 51.3vw;
 }
 
 .carousel-inner .item {
+	width: 100%;
+	opacity: 1;
+	z-index: 20;
+	height: 51.3vw;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center center;
-	width: 100%;
-	height: 51.3vw;
-	opacity: 1;
-	z-index: 20;
 }
 
-.carousel-content h2, p, a {
+/*
+	CONTENT PAGE FRONT PAGE
+*/
+
+.content-area-front-page {
+	margin: 60px 0;
+}
+
+/*
+	MEDIA AREA - SERVICES
+
+*/
+
+.bg-media {
+	margin: 90px 0 0;
+}
+
+.our-services-title {
+	font-size: 35px;
+	padding: 0 0 50px 0;
+}
+
+.our-services-title:after {
+	content: '';
+	height: 5px;
+	width: 50px;
+	margin: 5px 0;
+	display: block;
+	border-radius: 3px;
+	background: #18ba60;
+}
+
+.media-area {
+	margin: 0 0 30px 0;
+}
+
+.media-area:hover .icons{
+	background: #2e363a;
+}
+
+.pull-left .icons {
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: 15px 0;
+	transition: .5s;
+	border-radius: 3px;
+	background: #19B65F;
+
+  /* Rotação */  
+  transform: rotate(-45deg);
+}
+
+.pull-left .icons:hover {
+	background: #2e363a;
+}
+
+.pull-left i {
+	color: #fff;
+	display: block;
+	line-height: 3.4;
+	text-align: center;
+	transform: rotate(45deg);
+}
+
+.media-body .media-heading {
+	color: #222222;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.media-body {
+	padding: 0 22px 0;
+}
+
+.media-body p {
+	padding: 10px 0;
+	font-size: 14px; 
+}
+
+.our-project {
+	padding: 80px 0;
+	background: #fff;
+}
+
+.projects-title {
+	font-size: 35px;
+	padding: 0 0 50px 0;
+}
+
+.projects-title:after {
+	content: '';
+	margin: 5px 0;
+	width: 50px;
+	height: 5px;
+	display: block;
+	border-radius: 3px;
+	background: #18ba60;
+}
+
+
+/*
+ EFEITO CAPTION HOVER ON IMAGES PROJECTS
+*/
+
+.project-columns {
+  height: 99%;
+  background: rgba(18, 29, 47, 0.9);
+	
+}
+
+.project-columns .middle {
+  top: 50%;
+  left: 50%;
+	width: 60%;
+  opacity: 0;
+  position: absolute;
+  text-align: center;
+  transition: .5s ease;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.project-columns img {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.project-columns:hover img {
+	opacity: 0.2;
+}
+
+
+.project-columns:hover .middle {
+  opacity: 1;
+}
+
+.middle .text {
+  color: white;
+  font-size: 16px;
+  padding: 16px 0;
+}
+
+.middle .text h2 {
+	color: #18ba60;
+	font-weight: 700;
+	font-size: 20px;
+	text-transform: uppercase;
+	transition: .5s;
+}
+
+.middle .text span {
+	display: inline-block;
+}
+
+/* STYLE TO PREVIOUS AND NEXT FOR OUR PROJETC  CAROUSEL */
+
+.prev-carousel {
+  right: 50px;
+  left: inherit;
+}
+
+.next-carousel, .prev-carousel {
+	opacity: 1;
+	top: -50px;
+	width: 40px;
+  height: 40px;
+	transition: .5s;
+	bottom: inherit;
+	border-radius: 2px;
+	background: #18ba60;
+}
+
+.next-carousel:hover, .prev-carousel:hover {
+	background: #2e363a;
+}
+
+.next-carousel-icon, .prev-carousel-icon {
+	width: 13px;
+	height: 13px;
+}
+
+/*
+	
+	STYLE TO RECEIVE CALL SECTION
+
+*/
+
+.receive-call {
+	padding: 60px 0;
+	background: #2e363a;
+}
+
+.contact-receive {
+	color: #fff;
+	padding: 15px 0;
+}
+
+.contact-receive h2 {
+	text-transform: uppercase;
+}
+
+.contact-receive p {
+	padding: 20px 0 0px;
+}
+
+.form-receive label {
+	color: #ccc;
+}
+
+.form-receive input {
+	margin: 15px 0;
+  padding: 21.5px 20px;
+	background: #d8e7ef;
+}
+
+.form-receive input:focus {
+	background: #d8e7ef;
+	border: 1px solid #19b65f;
+}
+
+.form-receive select:focus {
+	background: #d8e7ef;
+	border: 1px solid #19b65f;
+}
+
+.form-receive select {
+	background: #d8e7ef;
+	font-size: 17px;
+}
+
+.email-receive {
+	margin: 43px 0 0 0;
+}
+
+.btn-receive button {
+	width: 100%;
+	padding: 11px 0;
+	background: #18ba60;
+	font-weight: 600;
+	border: 1px solid #18ba60;
+	transition: .5s;
+}
+
+.btn-receive button:hover {
+	background: #2e363a;
+	border: 1px solid #18ba60;
+}
+
+/*
+
+	 STYLE TO PARTNERS AREA
+
+*/
+
+.partners-area {
+	padding: 60px 0;
+}
+
+.partners-area .img-thumbnail {
+	padding: 0;
+	border: none;
+}
+
+.partners-prev, .partners-next {
+	width: 10%;
+}
+
+.partners-prev-icon {
+	background-image: url('assets/images/ico/prev.png');
+}
+
+.partners-next-icon {
+	background-image: url('assets/images/ico/next.png')
+}
+
+/*
+	
+	FOOTER
+
+*/
+
+.content-footer {
+	background: #2e363a;
+	padding: 35px 0 10px 0;
+}
+
+.flat-contact-footer {
+	color: #e5e5e5;
+	border-bottom: 1px solid #394348;
+}
+
+
+
+.flat-contact-footer .list-info li {
+	display: inline-block;
+	padding: 0 85px 10px 0;
+}
+
+.flat-contact-footer .icon {
+	background: #18BA60;
+	display: inline-block;
+	border-radius: 50%;
+	line-height: 2.5;
+	width: 40px;
+	height: 40px;
+	padding: 0 10px 0;
+}
+
+.flat-contact-footer span {
+	padding: 0px 7px 0;
+	font-size: 14px;
+}
+
+.widgets-bottom {
+	font-size: 14px;
+	color: #e5e5e5; 
+	padding: 50px 0;
+	border-bottom: 1px solid #394348;
+}
+
+/* STYLE WIDGETS BOTTOM */
+
+.menu-institucional-container ul li, .menu-servicos-container ul li {
+	display: block;
+	padding: 0 0 10px 0;
+}
+
+
+
+.menu-institucional-container ul li:before, .menu-servicos-container ul li:before {
+
+	content: "\f04b";
+	font: normal normal normal 9px/1 FontAwesome;
+	position: absolute;
+	left: 41px;
+	line-height: 2.6;
+
+}
+
+.menu-institucional-container ul li a, .menu-servicos-container ul li a {
+	color: #e5e5e5;
+	transition: .5s;
+	font-size: 14px;
+
+}
+
+.menu-institucional-container ul li a:hover, .menu-servicos-container ul li a:hover {
+	color: #18BA60;
+	text-decoration: none;
+
+}
+
+.wpcf7-form .wpcf7-form-control-wrap {
+	padding: 8px 0 0 0;
+	display: block;
+}
+
+.wpcf7-form label {
+	font-size: 14px
+}
+
+.wpcf7-form .input-email-bottom {
+	width: 100%;
+	padding: 10px 7px;
+	background: #d8e7ef;
+	border: none;
+	transition: .5s;
+}
+
+.wpcf7-form .input-email-bottom:focus {
+	border: 1px solid #18BA60;
+}
+
+.wpcf7-form .wpcf7-submit {
+	padding: 12px 34px;
+	border-radius: 3px;
+	border: none;
+	background: #18BA60;
+	transition: .5s;
+	cursor: pointer;
 	color: #fff;
 }
+
+.wpcf7-form .wpcf7-submit:hover {
+	background: #2e363a;
+	border: 1px solid #18BA60;
+}
+
+/* COPYRIGHT ALIGN */
+
+.copyright-align {
+	padding: 15px 0 0;
+	color: #e5e5e5;
+}
+
+/*
+	ABOUT-US STYLE
+*/
+#title h1 {
+	font-weight: 600;
+	font-size: 32px;
+}
+
+.emerald {
+	padding: 19px 0 0;
+	background: #F8F8F8;
+}
+
+.breadcrumb {
+	background: none;
+}
+
+.breadcrumb li {
+	font-size: 14px;
+}
+
+.breadcrumb li a {
+	color: #18ba60;
+	transition: .5s;
+	font-size: 14px;
+
+}
+
+.breadcrumb li a:after {
+	content: '>';
+  padding: 0 5px 0px;
+}
+
+.breadcrumb li a:hover {
+	text-decoration: none;
+	color: #333;
+}
+
+.carousel-inner-about-us img {
+	height: 100%;
+}
+
+.about-prev, .about-next {
+    top: 35%;
+    height: 11%;
+
+} 
+.about-prev-icon, .about-next-icon {
+	width: 45%;
+	height: 100%;
+	background-size: 20px;
+	border-radius: 3px;
+	background-color: #18ba60;
+}
+
+
+
+.content-about-us {
+	padding: 50px 0 40px;
+}
+
+.content-about-us h2 {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.content-about-us p {
+	font-size: 14px;
+	padding: 0 0 10px 0;
+}
+
+.content-history-about {
+	
+}
+
+.content-history-about .year {
+	font-size: 23px;
+	font-weight: 600;
+	color: #18ba60;
+}
+
+.content-history-about .year:after {
+	content: '';
+	display: block;
+	height: 1px;
+	width: 120px;
+	background: #dfdfdf;
+	margin: 18px 0;
+
+}
+
+
+
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575px) { 

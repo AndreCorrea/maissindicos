@@ -5,7 +5,7 @@ require_once(get_template_directory(). '/lib/breadcrumbs.php');
 
 global $post;
 
-if( is_single() ) {
+if( is_tag() ) {
 
     $title = zee_option('zee_blog_title');
 
@@ -42,7 +42,7 @@ if( is_single() ) {
     $title = __("Search results for", ZEETEXTDOMAIN) . " : " . get_search_query();
 } elseif ( is_tax( 'portfolios' ) ) {
     $title = __("Portfolio", ZEETEXTDOMAIN);
-} elseif ( is_home() and !is_front_page() ) {
+} elseif ( is_home()  and !is_front_page() ) {
 
     $page = get_queried_object();
 
@@ -57,7 +57,7 @@ if( is_single() ) {
  }
 
 
-} elseif ( (is_page()) && (!is_front_page()) ) {
+} elseif ( (is_page() || is_single()) && (!is_front_page()) ) {
     $page = get_queried_object();
 
     $ID = $page->ID;
@@ -65,7 +65,7 @@ if( is_single() ) {
     $title = $page->post_title;
     $sub_title = get_post_meta($ID, 'page_subtitle', true);
 
-} elseif( is_front_page() ){
+} elseif( is_front_page()){
 
     unset($title);
 }
